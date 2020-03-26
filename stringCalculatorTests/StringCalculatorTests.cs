@@ -3,7 +3,7 @@ using stringCalculatorTDD;
 
 namespace stringCalculatorTests
 {
-    public class StringCalculatorTests
+    public class StringCalculatorTests 
     {
         
 
