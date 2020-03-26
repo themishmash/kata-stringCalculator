@@ -1,3 +1,5 @@
+using System;
+
 namespace stringCalculatorTDD
 {
     public class StringCalculator
@@ -16,12 +18,27 @@ namespace stringCalculatorTDD
                 return result;
             }
 
-         
-            char[] delimiter = {',', '\n' };
-            string[] splitInput = input.Split(delimiter);
-            foreach (string letter in splitInput)
+            char anyDelimiter;
+            string[] resultStrings;
+            if (input.Contains("//"))
             {
-                result += int.Parse(letter);
+                anyDelimiter = input[2];
+                resultStrings = input.Split(anyDelimiter, ',', '\n');
+               
+                foreach (string resultString in resultStrings)
+                {
+                    Int32.TryParse(resultString, out int resultNum);
+                    result += resultNum;
+                }
+            }
+            else
+            {
+                char[] delimiter = {',', '\n' };
+                string[] splitInput = input.Split(delimiter);
+                foreach (string stringNum in splitInput)
+                {
+                    result += int.Parse(stringNum);
+                }
             }
 
             return result;
